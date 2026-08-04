@@ -1,5 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -54,6 +53,88 @@ with col3:
     st.info("🎯 **Practice Standard**\n\nMP.4 - Model with Math")
 
 st.success("**🎯 Learning Target:** I can use substitution to prove whether a given number makes an equation true, and I can translate a real-world statement — including a 'less than' turnaround phrase — into an equation.")
+
+st.markdown("---")
+
+# --- Standards Dropdown (MOVED ABOVE THE GOAL STATEMENT) ---
+st.subheader("📋 Explore the Standards Behind Today's Lesson")
+standard_choice = st.selectbox("Select a Michigan Standard (with its Common Core equivalent) to see how it connects to the big-picture goal:", [
+    "MI.6.EE.B.5 — Use substitution to determine whether a given number makes an equation true",
+    "MI.6.EE.B.6 — Use variables to represent numbers; write expressions/equations for real-world problems",
+    "MI.6.EE.B.7 — Solve real-world problems by writing and solving equations of the form x + p = q and px = q",
+    "MI.6.RP.A.3.c — Find a percent of a quantity; solve problems involving a part and a percent",
+    "MP.1 — Make sense of problems and persevere in solving them",
+    "MP.4 — Model with mathematics",
+    "MP.6 — Attend to precision"
+])
+
+standard_details = {
+    "MI.6.EE.B.5": {
+        "cc": "CCSS.MATH.CONTENT.6.EE.B.5",
+        "rigor": "Justification through evidence — the core of today's Hook and Guided Practice.",
+        "where": "Hook (APPROVED/REJECTED vote), Model (Pac-Man), Guided Practice (Donkey Kong/Q*bert)"
+    },
+    "MI.6.EE.B.6": {
+        "cc": "CCSS.MATH.CONTENT.6.EE.B.6",
+        "rigor": "Representation flexibility — moving fluently between plain language and symbolic code.",
+        "where": "Mini-Lesson (Turnaround Word Trap), Worksheet 1"
+    },
+    "MI.6.EE.B.7": {
+        "cc": "CCSS.MATH.CONTENT.6.EE.B.7",
+        "rigor": "Structural problem-solving — isolating an unknown to reveal its true value.",
+        "where": "Worksheet 1, Exit Ticket"
+    },
+    "MI.6.RP.A.3.c": {
+        "cc": "CCSS.MATH.CONTENT.6.RP.A.3.c",
+        "rigor": "Proportional reasoning — a preview connection for tomorrow's spiral review.",
+        "where": "Previewed at Close (IXL breadth sprint)"
+    },
+    "MP.1": {
+        "cc": "CCSS.MATH.PRACTICE.MP1",
+        "rigor": "Perseverance — trying, checking, and revising before giving up on a verdict.",
+        "where": "Guided Practice pair-work and justification"
+    },
+    "MP.4": {
+        "cc": "CCSS.MATH.PRACTICE.MP4",
+        "rigor": "Original modeling — the highest-leverage move in the whole lesson: authoring your own equation instead of consuming someone else's.",
+        "where": "Exit Ticket — Design Your Own Equation"
+    },
+    "MP.6": {
+        "cc": "CCSS.MATH.PRACTICE.MP6",
+        "rigor": "Precision of language — using terms like variable, quotient, and balanced equation exactly and correctly.",
+        "where": "Model segment vocabulary anchoring"
+    }
+}
+
+selected_code = standard_choice.split(" — ")[0]
+details = standard_details[selected_code]
+
+st.markdown(f"""
+<div style='background-color: #f0f4fa; padding: 15px; border-radius: 8px; border-left: 5px solid #002D72;'>
+    <p style='margin: 4px 0;'><strong>Michigan Standard:</strong> {selected_code}</p>
+    <p style='margin: 4px 0;'><strong>Common Core Equivalent:</strong> {details['cc']}</p>
+    <p style='margin: 4px 0;'><strong>🧭 Rigor Skill It Builds:</strong> {details['rigor']}</p>
+    <p style='margin: 4px 0;'><strong>📍 Where in Today's Lesson:</strong> {details['where']}</p>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("---")
+
+# --- Overarching Goal Statement (NOW BELOW THE DROPDOWN) ---
+st.markdown("""
+<div style='background: linear-gradient(135deg, #FFC72C 0%, #E8A317 100%); 
+            padding: 18px; border-radius: 10px; margin-bottom: 15px;'>
+    <h4 style='color: #002D72; margin-top: 0;'>🧭 The Big Picture: Why This Lesson Matters</h4>
+    <p style='color: #002D72; margin: 0; font-size: 0.98em;'>
+    Every activity today — voting on a suspect value, debugging Pac-Man code, translating a tricky sentence, 
+    designing your own equation — is really building the <strong>same underlying rigor skill: mathematical justification.</strong> 
+    That's the ability to <strong>prove a claim is true using evidence</strong> (substitution), 
+    <strong>convert between representations</strong> (words ⇄ symbols), and <strong>construct your own original model</strong> 
+    of a real situation (MP.4) rather than just following someone else's steps. This is the same reasoning skill 
+    that underlies science conclusions, financial decisions, and coding logic — not just today's worksheet.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -458,7 +539,7 @@ and expressions — including a first look at **MI.6.RP.A.3.c** (percents), to h
 st.markdown("---")
 
 # ============================================================
-# STANDARDS REFERENCE
+# STANDARDS REFERENCE TABLE
 # ============================================================
 st.header("📚 Michigan Standards Covered in This Lesson")
 
