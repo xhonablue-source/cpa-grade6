@@ -56,9 +56,13 @@ st.success("**🎯 Learning Target:** I can use substitution to prove whether a 
 
 st.markdown("---")
 
-# --- Standards Dropdown (MOVED ABOVE THE GOAL STATEMENT) ---
-st.subheader("📋 Explore the Standards Behind Today's Lesson")
-standard_choice = st.selectbox("Select a Michigan Standard (with its Common Core equivalent) to see how it connects to the big-picture goal:", [
+# ============================================================
+# MICHIGAN STANDARDS + COMMON CORE — FULL REFERENCE (TOP ONLY)
+# ============================================================
+st.header("📚 Michigan Standards & Common Core Equivalents Covered in This Lesson")
+st.markdown("Explore each standard below to see its Common Core equivalent, the rigor skill it builds, and exactly where it shows up in today's lesson.")
+
+standard_choice = st.selectbox("Select a Michigan Standard:", [
     "MI.6.EE.B.5 — Use substitution to determine whether a given number makes an equation true",
     "MI.6.EE.B.6 — Use variables to represent numbers; write expressions/equations for real-world problems",
     "MI.6.EE.B.7 — Solve real-world problems by writing and solving equations of the form x + p = q and px = q",
@@ -118,9 +122,38 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
+with st.expander("📋 See the Complete Standards Table (all standards at once)"):
+    standards_data = {
+        "Michigan Code": ["MI.6.EE.B.5", "MI.6.EE.B.6", "MI.6.EE.B.7", "MI.6.RP.A.3.c", "MP.1", "MP.4", "MP.6"],
+        "Common Core Equivalent": [
+            "CCSS.MATH.CONTENT.6.EE.B.5", "CCSS.MATH.CONTENT.6.EE.B.6", "CCSS.MATH.CONTENT.6.EE.B.7",
+            "CCSS.MATH.CONTENT.6.RP.A.3.c", "CCSS.MATH.PRACTICE.MP1", "CCSS.MATH.PRACTICE.MP4", "CCSS.MATH.PRACTICE.MP6"
+        ],
+        "Standard": [
+            "Understand solving an equation as determining which values from a set make it true; use substitution to test solutions.",
+            "Use variables to represent numbers; write expressions/equations to represent real-world and mathematical problems.",
+            "Solve real-world and mathematical problems by writing and solving equations of the form x + p = q and px = q.",
+            "Find a percent of a quantity; solve problems involving finding the whole given a part and the percent.",
+            "Make sense of problems and persevere in solving them.",
+            "Model with mathematics.",
+            "Attend to precision (vocabulary: variable, quotient, balanced equation, substitution)."
+        ],
+        "Where in Lesson": [
+            "Hook, Model, Guided Practice",
+            "Mini-Lesson, Worksheet 1",
+            "Worksheet 1, Exit Ticket",
+            "IXL breadth sprint (previewed at close)",
+            "Guided Practice pair-work and justification",
+            "Exit Ticket — Design Your Own Equation",
+            "Model segment vocabulary anchoring"
+        ]
+    }
+    standards_df = pd.DataFrame(standards_data)
+    st.dataframe(standards_df, use_container_width=True, hide_index=True)
+
 st.markdown("---")
 
-# --- Overarching Goal Statement (NOW BELOW THE DROPDOWN) ---
+# --- Overarching Goal Statement ---
 st.markdown("""
 <div style='background: linear-gradient(135deg, #FFC72C 0%, #E8A317 100%); 
             padding: 18px; border-radius: 10px; margin-bottom: 15px;'>
@@ -539,37 +572,6 @@ and expressions — including a first look at **MI.6.RP.A.3.c** (percents), to h
 st.markdown("---")
 
 # ============================================================
-# STANDARDS REFERENCE TABLE
-# ============================================================
-st.header("📚 Michigan Standards Covered in This Lesson")
-
-standards_data = {
-    "Code": ["MI.6.EE.B.5", "MI.6.EE.B.6", "MI.6.EE.B.7", "MI.6.RP.A.3.c", "MP.1", "MP.4", "MP.6"],
-    "Standard": [
-        "Understand solving an equation as determining which values from a set make it true; use substitution to test solutions.",
-        "Use variables to represent numbers; write expressions/equations to represent real-world and mathematical problems.",
-        "Solve real-world and mathematical problems by writing and solving equations of the form x + p = q and px = q.",
-        "Find a percent of a quantity; solve problems involving finding the whole given a part and the percent.",
-        "Make sense of problems and persevere in solving them.",
-        "Model with mathematics.",
-        "Attend to precision (vocabulary: variable, quotient, balanced equation, substitution)."
-    ],
-    "Where in Lesson": [
-        "Hook, Model, Guided Practice",
-        "Mini-Lesson, Worksheet 1",
-        "Worksheet 1, Exit Ticket",
-        "IXL breadth sprint (previewed at close)",
-        "Guided Practice pair-work and justification",
-        "Exit Ticket — Design Your Own Equation",
-        "Model segment vocabulary anchoring"
-    ]
-}
-standards_df = pd.DataFrame(standards_data)
-st.dataframe(standards_df, use_container_width=True, hide_index=True)
-
-st.markdown("---")
-
-# ============================================================
 # DIFFERENTIATION NOTE
 # ============================================================
 st.header("🎯 Differentiation Support")
@@ -584,6 +586,35 @@ with diff_col2:
 with diff_col3:
     st.markdown("**🤝 Support (Needs Support)**")
     st.write("Use a number line or manipulatives to test your substitution")
+
+st.markdown("---")
+
+# ============================================================
+# EXTRA PRACTICE RESOURCES
+# ============================================================
+st.header("🔗 Extra Practice: Keep Testing Your Code at Home")
+st.markdown("Want more reps on today's skill — proving whether a value satisfies an equation? Use these two trusted, free resources:")
+
+res_col1, res_col2 = st.columns(2)
+with res_col1:
+    st.markdown("""
+    <div style='background-color: #f0f4fa; padding: 15px; border-radius: 8px; border-left: 5px solid #002D72; height: 100%;'>
+        <h4 style='margin-top: 0; color: #002D72;'>📊 IXL Practice</h4>
+        <p style='margin: 4px 0;'><strong>Does x satisfy an equation?</strong></p>
+        <p style='margin: 4px 0; font-size: 0.9em;'>Matches today's MI.6.EE.B.5 substitution skill directly.</p>
+        <a href='https://www.ixl.com/math/grade-6/does-x-satisfy-an-equation' target='_blank'>👉 Practice on IXL</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+with res_col2:
+    st.markdown("""
+    <div style='background-color: #fff8ea; padding: 15px; border-radius: 8px; border-left: 5px solid #FFC72C; height: 100%;'>
+        <h4 style='margin-top: 0; color: #002D72;'>🎓 Khan Academy Practice</h4>
+        <p style='margin: 4px 0;'><strong>Testing solutions of equations and inequalities</strong></p>
+        <p style='margin: 4px 0; font-size: 0.9em;'>Free video support plus practice problems on the same skill.</p>
+        <a href='https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-equations-and-inequalities/cc-6th-intro-equations/e/testing-solutions-of-equations-inequalities' target='_blank'>👉 Practice on Khan Academy</a>
+    </div>
+    """, unsafe_allow_html=True)
 
 st.markdown("---")
 
